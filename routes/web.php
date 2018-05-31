@@ -11,12 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/todo',[
-    'uses'=>'ToDoController@index'
+Route::get('/',[
+    'uses' => 'ToDoController@index'
 ]
 );
 
+Route::post('create/todo', [
+    'uses' => 'ToDoController@insert'
+]);
+
+
+Route::get('delete/todo/{id}', [
+    'uses' => 'ToDoController@delete',
+]);
+
+Route::post('state/todo/{id}',[
+    'uses' => 'ToDoController@state'
+]);
